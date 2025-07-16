@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>ログ一覧</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html {
+      font-size: 100%;
+      font-family: sans-serif;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 578px) {
+      html {
+        font-size: 86%;
+      }
+    }
+  </style>
+</head>
+
+<body class="container py-5">
+  <h2 class="mb-4">ログ一覧</h2>
+  
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <p class="mb-0">ドラッグ＆ドロップで並び替え<br>並び替え・削除操作後は「確定」ボタンで一括反映します。(反映には2~3分かかります)</p>
+    <button id="confirm-btn" class="btn btn-primary" disabled>確定</button>
+  </div>
+  
+  <ul id="log-list" class="list-group">
+<li class="list-group-item d-flex justify-content-between align-items-center"
+    data-date="2025-07-16T11:34:18.200Z"
+    data-path="log/testlog（整形済 - Kanonn Yuduki様）.html"
+>
+  <span>
+    <span class="text-muted">testlog（整形済 - Kanonn Yuduki様）</span>
+    <a href="log/testlog（整形済 - Kanonn Yuduki様）.html" class="ms-2">testlog（整形済 - Kanonn Yuduki様）</a>
+  </span>
+  <button type="button" class="btn btn-sm btn-danger btn-delete">削除</button>
+</li>
+<li class="list-group-item d-flex justify-content-between align-items-center"
+    data-date="2025-07-16T11:32:09.915Z"
+    data-path="log/testlog.html"
+>
+  <span>
+    <span class="text-muted">testlog</span>
+    <a href="log/testlog.html" class="ms-2">testlog</a>
+  </span>
+  <button type="button" class="btn btn-sm btn-danger btn-delete">削除</button>
+</li>
+</ul>
+  
+  <script>
+    (function(){
+      // 1) GitHub Pages のホスト名から owner を得る
+      const host = window.location.hostname;
+      const owner = host.split('.github.io')[0];
+
+      // 2) パス ("/repo/…") から最初のセグメントを repo とする
+      const segs = window.location.pathname.split('/').filter(Boolean);
+      const repo = segs[0] || '';
+      
+      // グローバル設定にセット
+      window.CCU_CONFIG = { owner, repo };
+    })();
+  </script>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <script src="loglist.js"></script>
+  <script src="norobot.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    });
+  </script>
+</body>
+
+</html>

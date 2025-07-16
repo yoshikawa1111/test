@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+	<title>test[all]</title>
+<style>
+*{margin:0;padding: 0;font-size: 14px;font-family : 'メイリオ',Meiryo,Osaka,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','ＭＳ Ｐゴシック','MS PGothic',sans-serif;}
+body{width: 100%;margin: 0;padding: 0;background-color: #f7f7f7;position: relative;}
+a{color: #666666;}
+a:hover{color: #CD0000;}
+h1{font-size: 21px;color: #666666;margin: 0px;padding: 0px;border-bottom: 1px solid #CCCCCC;}
+h2{font-size: 16px;color: #666666;margin: 5px;padding: 50px 0 0 0;border-bottom: 1px dotted #CCCCCC;}
+label{transition: all 0.2s;}
+#toggle{display: none;}
+#label_toggle{display: block;width: 100px;text-align: center;padding: 0;border: 2px solid #CD0000;background-color: #FFFFFF;color: #CD0000;border-radius: 15px;position: fixed;top: 10px;right: 10px;z-index: 1005;}
+#label_toggle:hover{background-color:#CD0000;color:#FFFFFF;}
+header{display: block;width: 0px;height: 100%;position: fixed;background-color: #FFFFFF;border-left: 1px solid #CCCCCC;z-index: 2;top: 0;right: 0;overflow-y: auto;overflow-x: hidden;transition: all 0.2s;padding: 50px 0 0 0;box-sizing: border-box;}
+#toggle:checked + header{width: 200px;}
+header label{display: block;width: 180px;margin:0 5px;padding: 5px;border-bottom: 1px dotted #EFEFEF;}
+header label input[type="checkbox"]{margin-right: 5px;}
+label:hover{cursor:pointer;background-color: #EFEFEF;}
+.wrapper{display: block;width: calc(100% - 30px);max-width: 1100px;padding: 30px 15px 100px 15px;margin: 0 AUTO;overflow: hidden;position: relative;background-color: #FFFFFF;}
+/* ログ部分 */
+dl{display: block;margin: 0;padding: 3px;box-sizing: border-box;}
+dl::after{display: block;content: "";clear: both;}
+dt{display: block;font-size: 0.8em;font-weight: bold;float: left;width: 100px;margin: 0;padding: 5px 5px;text-align: right;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+dd{display: block;width: calc(100% - 120px);margin: 0;padding: 2px;float: right;line-height: 1.8em;}
+.zatsudan{width: 95%;margin: 0 0 0 AUTO;background:#f7f7f7;border-left:1px solid #CCCCCC;}
+.other{background-color:#fff7ef;}
+.secret{width: 98%;margin: 0 0 0 AUTO;border-left:3px solid #CCCCCC;}
+.group{background:#f9f9f9;border-left:1px solid #CCCCCC;}
+@media (max-width:480px){
+  dt{display: inline-block;float: none;width: calc(100% - 6px);margin: 0;padding: 3px 0 0 3px;text-align: left;}
+  dd{display: inline-block;width: calc(100% - 6px);padding: 3px;float: none;}
+}
+</style>
+<style>
+.tab_0{}
+.tab_0.selected{display: none;}
+
+</style>
+<meta name="robots" content="noindex,nofollow">
+<style>* { font-family: sans-serif !important; }</style>
+<script src="../norobot.js"></script>
+</head>
+<body>
+<label for="toggle" id="label_toggle">表示/非表示</label>
+<input type="checkbox" name="toggle" id="toggle">
+<header>
+<label>▽ 非表示にするタブ</label>
+<label for="main"><input type="checkbox" onClick="Hide(this)" class="checkbox" id="main">メイン</label>
+<label for="zatsudan"><input type="checkbox" onClick="Hide(this)" class="checkbox" id="zatsudan">雑談</label>
+<label for="tab_0"><input type="checkbox" onClick="Hide(this)" class="checkbox" id="tab_0">info</label>
+</header>
+<div class="wrapper">
+<h1>test[all]</h1>
+<h2 id="day1">test[all]</h2>
+<dl style="color:#222222" class="main"><dt>test</dt><dd>    こんにちは   </dd></dl>
+<dl style="color:#cddc39" class="main"><dt>test2</dt><dd>    おはよう   </dd></dl>
+<dl style="color:#cddc39" class="group tab_0"><dt>test2</dt><dd>    こんばんは   </dd></dl>
+
+</div>
+<footer></footer>
+
+<script>
+const Hide = (checkbox) => {
+  const elmntTarget = document.getElementsByClassName(checkbox.id)
+  for (let intCount = 0; intCount < elmntTarget.length; intCount++) {
+    const message = elmntTarget[intCount]
+    const contexts = message.className.split(' ')
+    let elmntChecked = checkbox.checked
+    contexts.forEach((context) => {
+      const contextCheckbox = document.getElementById(context)
+      if (contextCheckbox) {
+        elmntChecked &= contextCheckbox.checked
+      }
+    })
+    message.style.display = elmntChecked ? 'none' : ''
+  }
+}
+</script>
+</body>
+</html>

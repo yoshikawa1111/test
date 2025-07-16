@@ -1,0 +1,12 @@
+{
+  "name": "ccu_template",
+  "version": "1.0.0",
+  "description": "このリポジトリは CCU（ココフォリア・ログアップローダー）が GitHub Pages リポジトリを作成するときのテンプレートです。",
+  "main": "norobot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
